@@ -1,0 +1,114 @@
+body {
+  --cross-player-color: red;
+  --circle-player-color: blue;
+  --circle-text: "circle";
+  --cross-text: "cross";
+
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Result styles */
+#result-window {
+  top: 10vh;
+}
+#result-message {
+  font-size: 1.4em;
+}
+#result-message.cross::before {
+  content: var(--cross-text);
+  text-transform: capitalize;
+  color: var(--cross-player-color);
+}
+#result-message.circle::before {
+  content: var(--circle-text);
+  text-transform: capitalize;
+  color: var(--circle-player-color);
+}
+
+/* retry button */
+#retry-button {
+  width: fit-content;
+  margin: auto;
+  padding: .5em;
+
+  background-color: lightgray;
+  border: 1px solid black;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+#retry-button:hover {
+  background-color: darkslategray;
+  color: white;
+}
+
+/* Header Styles */
+.title, .player-turn-message {
+  margin: 0 .1em;
+} 
+.title {
+  font-size: calc(6em + 2vw);
+  color: var(--cross-player-color);
+}
+.title .first-word {
+  color: var(--circle-player-color);
+}
+.title .last-word {
+  color: black;
+}
+
+.player-turn-message {
+  font-size: calc(2em + 2vw);
+}
+.player-turn-message.cross::after {
+  content: var(--cross-text);
+  color: var(--cross-player-color);
+}
+.player-turn-message.circle::after {
+  content: var(--circle-text);
+  color: var(--circle-player-color);
+}
+
+/* Board styles */
+.ttt-container {
+  --grid-color: black;
+  --background-color: white;
+  --max-box-size: 500px;
+
+  margin: .5em 0;
+  width: 96vw;
+  max-width: var(--max-box-size);
+  height: 96vw;
+  max-height: var(--max-box-size);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3%;
+  background-color: var(--grid-color);
+}
+
+/* Box styles */
+.ttt-box {
+  background-color: var(--background-color);
+  width: 101%;
+  height: 101%;
+  font-size: min(20vw, calc(var(--max-box-size) / 5));
+  line-height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ttt-box.cross {
+  color: var(--cross-player-color);
+}
+.ttt-box.circle {
+  color: var(--circle-player-color);
+}
